@@ -25,8 +25,36 @@ end
 function love.load()
     success = love.window.setMode(800, 600, flags) core["scene"] = 0
     core["touch"] = -1
-    core["mem"] = °
-key.setting()
+    core["mem"] = 0
+end
+function key.appendbuffer()
+    if (math.random(1000)< 25) then
+    core.touch = core.touch +1
+    buf[core.touch] = {} buf [core.touch].x = key[math.random(4) - 1].x
+    buf [core.touch].y = -50
+    end
+end
+function key.scrolling()
+    for i = 0, core.touch do
+        if (buf[i]~= nil) then
+            buf[i].y = nil buf[i].x =nil buf[i].y + 10
+        end
+        if (buf[i] ~= nil and buf[i].y == 600) then
+            buf[i].y = nil buf[i].x = nil buf[i]= nil
+        end
+    end
+end
+function memorycleaner()
+    core.mem = core.mem+ 1
+    if (core.mem == 500) then
+        collectgarbage()
+    end
+end
+
+function love.uptdate(dt)
+    key.appendbuffer()
+    key.scrolling()
+    memorycleaner()
 end
 
 function love.draw()
