@@ -36,8 +36,8 @@ function key.appendbuffer()
 end
 function key.scrolling()
     for i = 0, core.touch do
-        if (buf[i]~= nil) then
-            buf[i].y = nil buf[i].x =nil buf[i].y + 10
+        if (buf[i] ~= nil) then
+            buf[i].y = buf[i].y +10
         end
         if (buf[i] ~= nil and buf[i].y == 600) then
             buf[i].y = nil buf[i].x = nil buf[i]= nil
